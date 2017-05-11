@@ -2358,7 +2358,7 @@ var Repository = function (_Requestable) {
                   ref.path = newPath;
                }
                if (ref.type === 'tree') {
-                  delete ref.sha;
+                  //delete ref.sha;
                }
                return ref;
             });
