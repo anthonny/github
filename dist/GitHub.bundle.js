@@ -442,7 +442,7 @@ var GitHub = function () {
 
     /**
      * Create a new Repository wrapper
-     * @param {string} user - the user who owns the respository
+     * @param {string} user - the user who owns the repository
      * @param {string} repo - the name of the repository
      * @return {Repository}
      */
@@ -455,7 +455,7 @@ var GitHub = function () {
 
     /**
      * Create a new Issue wrapper
-     * @param {string} user - the user who owns the respository
+     * @param {string} user - the user who owns the repository
      * @param {string} repo - the name of the repository
      * @return {Issue}
      */
@@ -2358,7 +2358,7 @@ var Repository = function (_Requestable) {
                   ref.path = newPath;
                }
                if (ref.type === 'tree') {
-                  //delete ref.sha;
+                  delete ref.sha;
                }
                return ref;
             });
@@ -2908,7 +2908,7 @@ var Requestable = function () {
             (_results = results).push.apply(_results, _toConsumableArray(thisGroup));
 
             var nextUrl = getNextPage(response.headers.link);
-            if (nextUrl && typeof options.page !== 'number') {
+            if (nextUrl && !(options && typeof options.page !== 'number')) {
                log('getting next page: ' + nextUrl);
                return _this2._requestAllPages(nextUrl, options, cb, results);
             }
